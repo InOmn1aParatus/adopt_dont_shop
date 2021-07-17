@@ -3,22 +3,109 @@ Pet.destroy_all
 PetApplication.destroy_all
 Shelter.destroy_all
 
-#applications
+# Applications
 
-app1 = Application.create!(name: 'Caroline Tan', street: '1234 One St', city: 'Vista', state: 'California', zip_code: 90123, status: 'pending')
-app2 = Application.create!(name: 'Ezze Alwfai', street: '2345 Two Ave', city: 'Portland', state: 'Oregon', zip_code: 90234, status: 'pending')
-app3 = Application.create!(name: 'Marla Shulz', street: '3456 Three Ln', city: 'Seattle', state: 'Washington', zip_code: 90345, status: 'approved')
-app4 = Application.create!(name: 'Matt Kragen', street: '4567 Four Blvd', city: 'Phoenix', state: 'Arizona', zip_code: 90456, status: 'approved')
-app5 = Application.create!(name: 'Scott Berecki', street: '5678 Five Rd', city: 'Albuquerque', state: 'New Mexico', zip_code: 90567, status: 'rejected')
-app6 = Application.create!(name: 'Sami Peterson', street: '6789 Six Ct', city: 'Reno', state: 'Nevada', zip_code: 90678, status: 'rejected')
-app7 = Application.create!(name: 'Taylor Varoglu', street: '7890 Seven Dr', city: 'Sal Lake City', state: 'Utah', zip_code: 90789, status: 'approve')
-app8 = Application.create!(name: 'Micheal Abbott', street: '8909 Eight Wy', city: 'Spring', state: 'Texas', zip_code: 90890, status: 'pending')
-app9 = Application.create!(name: 'Ozzie Osmonson', street: '9098 Nine Pl', city: 'Boulder', state: 'Colorado', zip_code: 90909, status: 'rejected')
-app10 = Application.create!(name: 'Carina Sweets', street: '0987 Ten Pkwy', city: 'Helena', state: 'Montana', zip_code: 90098, status: 'pending')
+app1 = Application.create!(
+  name: 'Matt Kragen',
+  street: '1234 One St',
+  city: 'Vista',
+  state: 'California',
+  zip_code: 90123,
+  status: 'Pending',
+  description: 'Definitely a dog dude'
+)
 
+app2 = Application.create!(
+  name: 'Doug Dye',
+  street: '2345 Two Ave',
+  city: 'Portland',
+  state: 'Oregon',
+  zip_code: 90234,
+  status: 'Pending',
+  description: 'Dogs love him'
+)
 
+app3 = Application.create!(
+  name: 'Ben Law',
+  street: '3456 Three Ln',
+  city: 'Seattle',
+  state: 'Washington',
+  zip_code: 90345,
+  status: 'Pending',
+  description: 'Knows how to keep them happy'
+)
 
-#shelters
+app4 = Application.create!(
+  name: 'Rain Ionescu',
+  street: '4567 Four Blvd',
+  city: 'Phoenix',
+  state: 'Arizona',
+  zip_code: 90456,
+  status: 'Pending',
+  description: 'Lives close to the shelter'
+)
+
+app5 = Application.create!(
+  name: 'David Down',
+  street: '5678 Five Rd',
+  city: 'Albuquerque',
+  state: 'New Mexico',
+  zip_code: 90567,
+  status: 'Pending',
+  description: 'Former veterinarian!'
+)
+
+app6 = Application.create!(
+  name: 'Mike Henlow',
+  street: '6789 Six Ct',
+  city: 'Reno',
+  state: 'Nevada',
+  zip_code: 90678,
+  status: 'Pending',
+  description: 'Has lots of property'
+)
+
+app7 = Application.create!(
+  name: 'Joe Chill',
+  street: '7890 Seven Dr',
+  city: 'Sal Lake City',
+  state: 'Utah',
+  zip_code: 90789,
+  status: 'Pending',
+  description: 'Former dog trainer'
+)
+
+app8 = Application.create!(
+  name: 'Jen Fitz',
+  street: '8909 Eight Wy',
+  city: 'Spring',
+  state: 'Texas',
+  zip_code: 90890,
+  status: 'Pending',
+  description: 'Lots of love to give'
+)
+
+app9 = Application.create!(
+  name: 'Boudica Helm',
+  street: '9098 Nine Pl',
+  city: 'Boulder',
+  state: 'Colorado',
+  zip_code: 90909,
+  status: 'Pending',
+  description: 'Gives lots of treats'
+)
+
+app10 = Application.create!(
+  name: 'Tiffany Bruser',
+  street: '0987 Ten Pkwy',
+  city: 'Helena',
+  state: 'Montana',
+  zip_code: 90098,
+  status: 'Pending',
+  description: 'Enjoys going on walks'
+)
+
+# Shelters
 
 shelter1 = Shelter.create!(
   name: "SD Humane Society",
@@ -34,7 +121,7 @@ shelter2 = Shelter.create!(
   foster_program: "false"
 )
 
-#pets
+# Pets
 
 pet1 = shelter1.pets.create!(
   name: "Rick",
