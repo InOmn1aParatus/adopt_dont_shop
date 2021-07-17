@@ -1,0 +1,26 @@
+<h1>New Application Form</h1>
+
+<%= form_with url: "/applications", method: :post, local: true do |f| %>
+  
+  <%= f.hidden_field :status, :value => "In Progress" %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :street %><br>
+  <%= f.text_field :street %><br>
+
+  <%= f.label :city %><br>
+  <%= f.text_field :city %><br>
+
+  <%= f.label :state %><br>
+  <%= f.text_field :state %><br>
+
+  <%= f.label :zip_code %><br>
+  <%= f.text_field :zip_code %><br>
+  
+  <%= f.label :description %><br>
+  <%= f.text_field :description %><br><br>
+
+  <%= f.submit "Submit" %>
+
+<% end %>
