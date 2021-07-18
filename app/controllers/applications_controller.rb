@@ -5,6 +5,11 @@ class ApplicationsController < ApplicationController
 
   def show
     @application = Application.find(params[:id])
+    if params[:name].present?
+      @pets = Pet.where("lower(name) LIKE ?", "%#{params[:name].downcase}%")
+    else
+      @pets = Pet.adoptable
+    end
   end
 
   def new
@@ -17,6 +22,14 @@ class ApplicationsController < ApplicationController
     else
       flash[:alert] = "All fields must be filled out!"
       redirect_to '/applications/new'
+    end
+  end
+
+  def update
+    application = Application.find(params[:id])
+    if params[].present?
+      application.add_pet(pet)
+      redirect_to "/applications/#{application.id}"
     end
   end
 

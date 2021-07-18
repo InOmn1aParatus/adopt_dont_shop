@@ -11,7 +11,7 @@ app1 = Application.create!(
   city: 'Vista',
   state: 'California',
   zip_code: 90123,
-  status: 'Pending',
+  status: 'In Progress',
   description: 'Definitely a dog dude'
 )
 
@@ -21,7 +21,7 @@ app2 = Application.create!(
   city: 'Portland',
   state: 'Oregon',
   zip_code: 90234,
-  status: 'Pending',
+  status: 'In Progress',
   description: 'Dogs love him'
 )
 
@@ -31,7 +31,7 @@ app3 = Application.create!(
   city: 'Seattle',
   state: 'Washington',
   zip_code: 90345,
-  status: 'Pending',
+  status: 'In Progress',
   description: 'Knows how to keep them happy'
 )
 
@@ -41,7 +41,7 @@ app4 = Application.create!(
   city: 'Phoenix',
   state: 'Arizona',
   zip_code: 90456,
-  status: 'Pending',
+  status: 'In Progress',
   description: 'Lives close to the shelter'
 )
 
@@ -51,7 +51,7 @@ app5 = Application.create!(
   city: 'Albuquerque',
   state: 'New Mexico',
   zip_code: 90567,
-  status: 'Pending',
+  status: 'In Progress',
   description: 'Former veterinarian!'
 )
 
@@ -61,7 +61,7 @@ app6 = Application.create!(
   city: 'Reno',
   state: 'Nevada',
   zip_code: 90678,
-  status: 'Pending',
+  status: 'In Progress',
   description: 'Has lots of property'
 )
 
@@ -71,7 +71,7 @@ app7 = Application.create!(
   city: 'Sal Lake City',
   state: 'Utah',
   zip_code: 90789,
-  status: 'Pending',
+  status: 'In Progress',
   description: 'Former dog trainer'
 )
 
@@ -81,7 +81,7 @@ app8 = Application.create!(
   city: 'Spring',
   state: 'Texas',
   zip_code: 90890,
-  status: 'Pending',
+  status: 'In Progress',
   description: 'Lots of love to give'
 )
 
@@ -91,7 +91,7 @@ app9 = Application.create!(
   city: 'Boulder',
   state: 'Colorado',
   zip_code: 90909,
-  status: 'Pending',
+  status: 'In Progress',
   description: 'Gives lots of treats'
 )
 
@@ -101,7 +101,7 @@ app10 = Application.create!(
   city: 'Helena',
   state: 'Montana',
   zip_code: 90098,
-  status: 'Pending',
+  status: 'In Progress',
   description: 'Enjoys going on walks'
 )
 

@@ -1,7 +1,6 @@
 
 <h2>Name: <%= @application.name %></h2>
-<p>Address: </p>
-<p>
+<p> Address:<br>
   <%= @application.street %><br>
   <%= @application.city %>,
   <%= @application.state %> 
@@ -9,3 +8,29 @@
 </p>
 <p>Description: <%= @application.description %></p>
 <p>Application Status: <%= @application.status %></p>
+
+<p>
+  Pets on this application:
+  <%= @application.pets.each do |pet| %>
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+    <br>
+  <% end %>
+</p>
+
+<h2>Add a Pet to this Application</h2>
+<%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
+  <%= f.label :name, 'Search by name:' %>
+  <%= f.text_field :name %>
+  <%= f.submit "Submit" %>
+<% end %><br>
+
+<% @pets.each do |pet| %>
+  <p>Name: <%= pet.name %></p>
+  <p>Age: <%= pet.age %></p>
+  <p>Breed: <%= pet.breed %></p>
+  <%= form_with url: "/applications/#{@application.id}", method: :patch, local: true do |f| %>
+    <%= f.submit "Adopt this Pet" %>
+  <% end %>
+  <br>
+<% end %>
+
