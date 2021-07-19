@@ -37,29 +37,22 @@ RSpec.describe 'Application show page' do
     expect(page).to have_content('Definitely a dog dude')
   end
 
-  it 'allows user to search for pet on application' do
+  it 'allows user to exact/partial/case-insensitive search for pet on application' do
     visit "/applications/#{@app1.id}"
     expect(page).to have_content('Add a Pet to this Application')
 
     fill_in :name, with: "Rick"
     click_button "Submit"
-
     expect(current_path).to eq("/applications/#{@app1.id}")
     expect(page).to have_content("Rick")
-  end
-
-  it 'allows user to partial/case-insensitive search for pet on application' do
-    visit "/applications/#{@app1.id}"
-    expect(page).to have_content('Add a Pet to this Application')
 
     fill_in :name, with: "ri"
     click_button "Submit"
-
     expect(current_path).to eq("/applications/#{@app1.id}")
     expect(page).to have_content("Rick")
   end
 
-  xit 'can add pets to application' do
+  it 'can add pets to application' do
     visit "/applications/#{@app1.id}"
     fill_in :name, with: "Rick"
     click_button "Submit"
@@ -67,10 +60,7 @@ RSpec.describe 'Application show page' do
     
     click_button ('Adopt this Pet')
     expect(current_path).to eq("/applications/#{@app1.id}")
-    expect(page).to have_content("Pets on this application: Rick")
+    expect(page).to have_content("Pets on this application:")
+    expect(@app1.pets).to eq([@pet1])
   end
-  # Then next to each Pet's name I see a button to "Adopt this Pet"
-  # When I click one of these buttons
-  # Then I am taken back to the application show page
-  # And I see the Pet I want to adopt listed on this application
 end
