@@ -7,7 +7,7 @@ class Application < ApplicationRecord
   has_many :pet_applications, dependent: :destroy
   has_many :pets, through: :pet_applications
 
-  def add_pet(application, pet)
-    application.pets << pet
+  def submittable?
+    !self.pets.empty?
   end
 end

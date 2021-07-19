@@ -14,8 +14,7 @@ RSpec.describe 'Application show page' do
       city: 'Vista',
       state: 'California',
       zip_code: 90123,
-      status: 'Pending',
-      description: 'Definitely a dog dude'
+      status: 'In Progress'
     )
     @pet1 = @shelter1.pets.create!(
       name: "Rick",
@@ -55,7 +54,7 @@ RSpec.describe 'Application show page' do
   it 'can add pets to application' do
     visit "/applications/#{@app1.id}"
     fill_in :name, with: "Rick"
-    click_button "Submit"
+    click_button "Search"
     expect(page).to have_content('Rick')
     
     click_button ('Adopt this Pet')
@@ -63,4 +62,29 @@ RSpec.describe 'Application show page' do
     expect(page).to have_content("Pets on this application:")
     expect(@app1.pets).to eq([@pet1])
   end
+
+  it 'allows application submission once 1+ pets on application' do
+    visit "/applications/#{@app1.id}"
+    fill_in :name, with: "Rick"
+    click_button "Search"
+    expect(page).to_not have_content('Submit Application')
+
+    click_button ('Adopt this Pet')
+    fill_in :description, with: "I rock"
+    click_button ('Submit Application')
+    expect(current_path).to eq("/applications/#{@app1.id}")
+    @app1.reload
+    expect(@app1.description).to eq("I rock")
+    expect(@app1.status).to eq("Pending")
+  end
+
+  xit 'can Search only once pets have been added to application' do
+    visit "/applications/#{@app1.id}"
+    expect(page).to_not have_content('Submit')
+    fill_in :name, with: "Rick"
+    expect(page).to have_content('Submit')
+  end
+  # And I see an indicator that the application is "Pending"
+  # And I see all the pets that I want to adopt
+  # And I do not see a section to add more pets to this application
 end

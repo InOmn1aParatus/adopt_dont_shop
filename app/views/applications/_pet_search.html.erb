@@ -1,5 +1,17 @@
 <%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |f| %>
   <%= f.label :name, 'Search by name:' %>
   <%= f.text_field :name %>
-  <%= f.submit "Submit" %>
+  <%= f.submit "Search" %>
 <% end %><br>
+
+<% @pets.each do |pet| %>
+  <p>Name: <%= pet.name %></p>
+  <p>Age: <%= pet.age %></p>
+  <p>Breed: <%= pet.breed %></p>
+  <%= form_with url: "/pet_applications", method: :post, local: true do |f| %>
+    <%= f.hidden_field :application_id, :value => "#{@application.id}" %>
+    <%= f.hidden_field :pet_id, :value => "#{pet.id}" %>
+    <%= f.submit "Adopt this Pet" %>
+  <% end %>
+  <br>
+<% end %>
