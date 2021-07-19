@@ -8,6 +8,9 @@
   <%= @application.zip_code %>
 </p>
 <p>Application Status: <%= @application.status %></p>
+<% if @application.submittable? %>
+  <p>Description: <%= @application.description %></p>
+<% end %>
 
 <p>
   Pets on this application:
