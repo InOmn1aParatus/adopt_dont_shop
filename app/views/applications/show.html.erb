@@ -29,6 +29,9 @@
   <% end %>
 <% end %>
 
-<h3>Add a Pet to this Application</h3>
-<%= render 'pet_search' %>
+<br>
 
+<% if @application.searchable? %>
+  <h3>Add a Pet to this Application</h3>
+  <%= render 'pet_search' %>
+<% end %>

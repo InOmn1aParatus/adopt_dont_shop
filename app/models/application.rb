@@ -8,6 +8,10 @@ class Application < ApplicationRecord
   validates :zip_code, presence: true, numericality: true
 
   def submittable?
-    !self.pets.empty?
+    !self.pets.empty? && self.status != 'Pending'
+  end
+  
+  def searchable?
+    self.status != 'Pending'
   end
 end
