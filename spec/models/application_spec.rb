@@ -19,7 +19,7 @@ RSpec.describe Application, type: :model do
       city: 'Vista',
       state: 'California',
       zip_code: 90123,
-      status: 'Pending',
+      status: 'In Progress',
       description: 'Definitely a dog dude'
     )
     @pet1 = @shelter1.pets.create!(
@@ -30,10 +30,11 @@ RSpec.describe Application, type: :model do
     )
   end
 
-  describe 'features' do
-    it 'can add a pet to application' do
-      @app1.add_pet(@app1, @pet1)
-      expect(@app1.pets).to eq([@pet1])
+  describe 'methods' do
+    it 'allows application only when submittable' do
+      expect(@app1.submittable?).to eq(false)
+      PetApplication.create(pet: @pet1, application: @app1)
+      expect(@app1.submittable?).to eq(true)
     end
   end
 end
