@@ -26,14 +26,12 @@ RSpec.describe 'Application show page' do
 
   it 'shows applications with all their attributes' do
     visit "/applications/#{@app1.id}"
-
     expect(page).to have_content('Matt Kragen')
     expect(page).to have_content('1234 One St')
     expect(page).to have_content('Vista')
     expect(page).to have_content('California')
     expect(page).to have_content('90123')
-    expect(page).to have_content('Pending')
-    expect(page).to have_content('Definitely a dog dude')
+    expect(page).to have_content('In Progress')
   end
 
   it 'allows user to exact/partial/case-insensitive search for pet on application' do
@@ -41,12 +39,12 @@ RSpec.describe 'Application show page' do
     expect(page).to have_content('Add a Pet to this Application')
 
     fill_in :name, with: "Rick"
-    click_button "Submit"
+    click_button "Search"
     expect(current_path).to eq("/applications/#{@app1.id}")
     expect(page).to have_content("Rick")
 
     fill_in :name, with: "ri"
-    click_button "Submit"
+    click_button "Search"
     expect(current_path).to eq("/applications/#{@app1.id}")
     expect(page).to have_content("Rick")
   end
@@ -73,18 +71,21 @@ RSpec.describe 'Application show page' do
     fill_in :description, with: "I rock"
     click_button ('Submit Application')
     expect(current_path).to eq("/applications/#{@app1.id}")
+    
     @app1.reload
     expect(@app1.description).to eq("I rock")
     expect(@app1.status).to eq("Pending")
   end
 
-  xit 'can Search only once pets have been added to application' do
+  it 'can Search only once pets have been added to application' do
     visit "/applications/#{@app1.id}"
-    expect(page).to_not have_content('Submit')
-    fill_in :name, with: "Rick"
-    expect(page).to have_content('Submit')
+    expect(page).to_not have_content('Submit Application')
+    
+    expect(page).to have_content('Rick')
+    click_button ('Adopt this Pet')
+    fill_in :description, with: "I rock"
+    click_button ('Submit Application')
+    save_and_open_page
+    expect(page).to_not have_content('Search')
   end
-  # And I see an indicator that the application is "Pending"
-  # And I see all the pets that I want to adopt
-  # And I do not see a section to add more pets to this application
 end
