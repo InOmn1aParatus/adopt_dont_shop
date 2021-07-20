@@ -205,6 +205,8 @@ SQL Only Story
 
 For this story, you should write your queries in raw sql. You can use the ActiveRecord find_by_sql method to execute raw sql queries: https://guides.rubyonrails.org/active_record_querying.html#finding-by-sql
 
+[ ] done
+
 Admin Shelters Index
 
 As a visitor
@@ -216,6 +218,8 @@ Then I see all Shelters in the system listed in reverse alphabetical order by na
 For this story, you should fully leverage ActiveRecord methods in your query.
 
 Shelters with Pending Applications
+
+[ ] done
 
 As a visitor
 When I visit the admin shelter index ('/admin/shelters')
