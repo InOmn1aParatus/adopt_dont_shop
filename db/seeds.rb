@@ -192,3 +192,10 @@ pet10 = shelter2.pets.create!(
   adoptable: false,
   age: 10
 )
+
+# Pet Applications
+
+pet_app1 = PetApplication.create(pet: pet1, application: app1)
+pet_app2 = PetApplication.create(pet: pet2, application: app1)
+pet_app3 = PetApplication.create(pet: pet3, application: app2)
+pet_app4 = PetApplication.create(pet: pet4, application: app2)
