@@ -8,12 +8,16 @@ class Shelter < ApplicationRecord
   def self.order_by_recently_created
     order(created_at: :desc)
   end
-
+  
   def self.order_by_number_of_pets
     select("shelters.*, count(pets.id) AS pets_count")
-      .joins("LEFT OUTER JOIN pets ON pets.shelter_id = shelters.id")
-      .group("shelters.id")
-      .order("pets_count DESC")
+    .joins("LEFT OUTER JOIN pets ON pets.shelter_id = shelters.id")
+    .group("shelters.id")
+    .order("pets_count DESC")
+  end
+  
+  def self.reverse_alphabetical_order
+    find_by_sql("SELECT * FROM shelters ORDER BY shelters.name DESC")
   end
 
   def pet_count
