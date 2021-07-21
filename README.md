@@ -264,7 +264,7 @@ And instead I see an indicator next to the pet that they have been rejected
 ```
 Approved/Rejected Pets on one Application do not affect other Applications
 
-[ ] done
+[X] done
 
 As a visitor
 When there are two applications in the system for the same pet
