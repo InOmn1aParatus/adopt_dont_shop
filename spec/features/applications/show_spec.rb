@@ -54,8 +54,7 @@ RSpec.describe 'Application show page' do
     fill_in :name, with: "Rick"
     click_button "Search"
     expect(page).to have_content('Rick')
-    # save_and_open_page
-    # require 'pry'; binding.pry
+    
     click_button ('Adopt this Pet')
     expect(current_path).to eq("/applications/#{@app1.id}")
     expect(page).to have_content("Pets on this application:")
@@ -86,7 +85,6 @@ RSpec.describe 'Application show page' do
     click_button ('Adopt this Pet')
     fill_in :description, with: "I rock"
     click_button ('Submit Application')
-    save_and_open_page
     expect(page).to_not have_content('Search')
   end
 end
