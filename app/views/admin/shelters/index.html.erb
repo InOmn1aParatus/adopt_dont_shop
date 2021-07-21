@@ -1,0 +1,15 @@
+<h1>Admin Portal - Shelters</h1>
+<hr>
+
+<h2>Shelters</h2>
+
+<% @shelters.each do |shelter| %>
+  <h3><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %></h1>
+  <p>City: <%= shelter.city %></p>
+  <p>Rank: <%= shelter.rank %></p>
+  <p>Foster Program?: <%= shelter.foster_program %></p>
+
+  <%= button_to 'Edit Shelter', "/shelters/#{shelter.id}/edit", method: :get %>
+  
+  <%= button_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %><br>
+<% end %>
