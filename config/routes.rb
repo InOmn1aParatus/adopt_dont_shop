@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :applications, only: [:show]
     resources :pet_applications, only: [:update]
+    resources :shelters, only: [:index]
   end
 
   get '/shelters', to: 'shelters#index'
