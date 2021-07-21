@@ -33,18 +33,26 @@ RSpec.describe 'Admin show page' do
   end
 
   it 'can approve a pet for adoption' do
-    visit "/admin/applications/#{@app1.id}"
+    visit admin_application_path(@app1)
     expect(page).to have_content(@pet1.name)
     click_button 'Approve for Adoption'
     @pet_app.reload
-    
+
     expect(@pet_app.status).to eq('Approved')
-    expect(current_path).to eq("/admin/applications/#{@app1.id}")
+    expect(current_path).to eq(admin_application_path(@app1))
     expect(page).to_not have_content('Approve for Adoption')
-    # expect(page).to have_content('Approved for Adoption!')
+    expect(page).to have_content('Approved for Adoption!')
   end
-  # When I click that button
-  # Then I'm taken back to the admin application show page
-  # And next to the pet that I approved, I do not see a button to approve this pet
-  # And instead I see an indicator next to the pet that they have been approved
+  
+  it 'can reject a pet for adoption' do
+    visit admin_application_path(@app1)
+    expect(page).to have_content(@pet1.name)
+    click_button 'Reject Adoption Request'
+    @pet_app.reload
+
+    expect(@pet_app.status).to eq('Rejected')
+    expect(current_path).to eq(admin_application_path(@app1))
+    expect(page).to_not have_content('Reject Adoption Request')
+    expect(page).to have_content('Adoption Request Rejected')
+  end
 end

@@ -14,10 +14,19 @@
 
 <section>
   Pets on this application:
-  <% @application.pets.each do |pet| %>
+  <% @application.pet_applications.each do |pet_app| %>
     <p>
-      <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
-      <%= button_to 'Approve for Adoption', "/admin/applications/#{@application.id}", result: 'approved', method: :patch %>
+      <%= link_to "#{pet_app.pet.name}", "/pets/#{pet_app.pet.id}" %>
+      <% if pet_app.status == 'Pending' %>
+        <%= button_to 'Approve for Adoption', admin_pet_application_path(pet_app, pet_id: pet_app.pet.id, result: 'approved'), method: :patch %>
+        <%= button_to 'Reject Adoption Request', admin_pet_application_path(pet_app, pet_id: pet_app.pet.id), method: :patch %>
+      <% end %>
+      <% if pet_app.status == 'Approved'%>
+        <span>Approved for Adoption!</span>
+      <% end %>
+      <% if pet_app.status == 'Rejected'%>
+        <span>Adoption Request Rejected</span>
+      <% end %>
     </p>
     <br>
   <% end %>

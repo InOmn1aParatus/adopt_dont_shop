@@ -7,7 +7,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 # Heroku
-config.assets.initialize_on_precompile = false
+# config.assets.initialize_on_precompile = false
 
 module AdoptDontShop
   class Application < Rails::Application

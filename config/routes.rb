@@ -7,9 +7,6 @@ Rails.application.routes.draw do
     resources :applications, only: [:show]
     resources :pet_applications, only: [:update]
   end
-  
-  get '/admin/applications/:id', to: 'admin#show'
-  patch '/admin/applications/:id', to: 'admin#update'
 
   get '/shelters', to: 'shelters#index'
   get '/shelters/new', to: 'shelters#new'
