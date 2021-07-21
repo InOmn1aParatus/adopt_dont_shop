@@ -205,7 +205,7 @@ SQL Only Story
 
 For this story, you should write your queries in raw sql. You can use the ActiveRecord find_by_sql method to execute raw sql queries: https://guides.rubyonrails.org/active_record_querying.html#finding-by-sql
 
-[ ] done
+[X] done
 
 Admin Shelters Index
 
@@ -219,7 +219,7 @@ For this story, you should fully leverage ActiveRecord methods in your query.
 
 Shelters with Pending Applications
 
-[ ] done
+[X] done
 
 As a visitor
 When I visit the admin shelter index ('/admin/shelters')
@@ -234,7 +234,7 @@ Pets on an application can either be accepted or rejected.
 For this set of stories, we will be making routes that begin with '/admin'. This is to indicate that only a user with special privileges should be able to accept or reject pets on an application. Normally, we would want to make sure that a user is logged into an admin account before being able complete any of this workflow, but we will not add any log in or authorization functionality to this project.
 
 ```
-[ ] done
+[X] done
 
 Approving a Pet for Adoption
 
@@ -248,7 +248,7 @@ And instead I see an indicator next to the pet that they have been approved
 ```
 
 ```
-[ ] done
+[X] done
 
 Rejecting a Pet for Adoption
 
@@ -263,6 +263,8 @@ And instead I see an indicator next to the pet that they have been rejected
 
 ```
 Approved/Rejected Pets on one Application do not affect other Applications
+
+[ ] done
 
 As a visitor
 When there are two applications in the system for the same pet
