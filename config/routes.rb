@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  get '/', to: 'application#welcome'
-
-  post '/pet_applications', to: 'pet_applications#create'
+  root 'application#welcome'
 
   namespace :admin do
     resources :applications, only: [:show]
     resources :pet_applications, only: [:update]
     resources :shelters, only: [:index]
   end
+
+  post '/pet_applications', to: 'pet_applications#create'
 
   get '/shelters', to: 'shelters#index'
   get '/shelters/new', to: 'shelters#new'

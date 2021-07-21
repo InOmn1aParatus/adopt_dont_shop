@@ -1,8 +1,18 @@
 <h1>Admin Portal - Shelters</h1>
 <hr>
 
-<h2>Shelters</h2>
+<h2>Shelters with Pending Applications:</h3>
 
+<section id="pending">
+<% @pending_shelters.each do |shelter| %>
+  <h3 id="pending_shelters"><%= link_to "#{shelter.name}", admin_shelters_path(shelter) %></h3>
+<% end %>
+</section>
+<hr>
+
+<h2>Index</h2>
+
+<section id="index">
 <% @shelters.each do |shelter| %>
   <h3><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %></h1>
   <p>City: <%= shelter.city %></p>
@@ -13,3 +23,4 @@
   
   <%= button_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %><br>
 <% end %>
+</section>
