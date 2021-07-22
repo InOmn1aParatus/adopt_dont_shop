@@ -77,4 +77,19 @@ RSpec.describe 'Admin show page' do
     expect(page).to have_content('Rick')
     expect(find('#pets')).to have_button('Approve for Adoption')
   end
+
+  it 'Updates application status on approval of all pets' do
+    visit admin_application_path(@app1)
+    click_button 'Approve for Adoption'
+    @app1.reload
+    expect(@app1.status).to eq('Approved')
+  end
+  
+  # In process of working through rejection update
+  xit 'Updates application status on rejection of one pets' do
+    visit admin_application_path(@app1)
+    click_button 'Reject Adoption Request'
+    @app1.reload
+    expect(@app1.status).to eq('Rejected')
+  end
 end
